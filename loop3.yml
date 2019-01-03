@@ -1,0 +1,22 @@
+---
+- name: CREATING USERS AND CREATE THEIR FILES/DIRS
+  hosts: node2
+  tasks:
+   - name: CREATING USERS
+     user:
+      name: "{{item.a}}"
+      password: "{{item.b}}"
+      home: "{{item.c}}"
+     with_items:
+      - {a: ramu,b: intelliq,c: /home/ramu}
+      - {a: mahesh,b: intelliq,c: /home/mahesh}
+   - name: CREATING FILES IN THEIR HOME
+     file:
+      name: "{{item.a}}"
+      state: "{{item.b}}"
+     with_items:
+      - {a: /home/ramu/dir1,b: directory}
+      - {a: /home/mahesh/file1,b: touch}
+
+
+...

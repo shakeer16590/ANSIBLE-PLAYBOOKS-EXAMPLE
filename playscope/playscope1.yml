@@ -1,0 +1,14 @@
+---
+- name: PLAYSCOPE VARIABLE INSTALLING PACKAGE WITHIN THE PLAYBOOK
+  hosts: node1
+  vars:
+   - package: tree
+   - state: latest
+   - cache: yes
+  tasks:
+   - name: INSTALLING OR UNINSTALLING
+     apt:
+      name: "{{package}}"
+      state: "{{state}}"
+      update_cache: "{{cache}}"
+...

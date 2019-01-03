@@ -1,0 +1,19 @@
+---
+- name: ERROR HANDLING IN ANSIBLE 
+  hosts: node1
+  tasks:
+   - name: installation of apache2
+     block:
+     - apt:
+        name: apache1
+        state: present
+     rescue:
+     - apt:
+        name: apache2
+        state: present
+     always:
+     - debug:
+        msg: "APACHE2 INSTALLATION COMPLETED"
+
+
+...

@@ -1,0 +1,22 @@
+---
+- name: TAGGING MODULES
+  hosts: 172.31.25.120
+  tasks: 
+   - name: installing tree
+     apt:
+      name: tree
+      state: present
+     tags:
+      tree_installation
+   - name : COPY PASSWORD
+     copy:
+      src: /etc/passwd
+      dest: /tmp
+     tags:
+      copy_password
+   - name: USER CREATION
+     user:
+      name: shakeer
+      password: shakeer
+
+...

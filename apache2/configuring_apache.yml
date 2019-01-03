@@ -1,0 +1,13 @@
+---
+- name: CONFIGURING APACHE2
+  hosts: node1
+  tasks:
+   - include: "{{item}}"
+     with_items:
+      - install_apache
+      - edit_index.html 
+      - restart_apache2
+      - url_responce
+
+
+...

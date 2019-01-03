@@ -1,0 +1,19 @@
+---
+- name: checking url response
+  hosts: all
+  tasks:
+   - name: check url response of google.com
+     uri:
+      url: http://www.google.com
+      status: ok
+     register: results
+   - name: display msg
+     debug:
+      msg: "website is {{ results.url }} reachable"
+     when:
+      results.status == 200
+   
+
+
+
+...

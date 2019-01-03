@@ -1,0 +1,11 @@
+---
+- name: HOSTSCOPE VARIABLE EXAMPLE
+  hosts: webserver
+  tasks:
+   - user:
+      name: "{{a}}"
+      password: "{{b}}"
+      home: "{{c}}"
+      shell: "{{d}}"
+
+...

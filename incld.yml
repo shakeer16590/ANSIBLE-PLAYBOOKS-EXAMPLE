@@ -1,0 +1,8 @@
+---
+- name: CALLING OTHE PLAYBOOKS
+  hosts: all
+  tasks:
+   - include:
+      git.yml
+
+...

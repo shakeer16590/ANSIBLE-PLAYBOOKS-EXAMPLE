@@ -1,0 +1,37 @@
+---
+- name: HANDLERS EXAMPLE
+  hosts: node2
+  tasks:
+   - name: installing apache2
+     apt:
+      name: apache2
+      state: present
+      update_cache: yes
+     notify:
+     - url_response
+   - name: edit index.html
+     copy:
+      content: 'Welcome to my world Robo 2.0'
+      dest: /var/www/html/index.html
+     notify:
+     - restart_apache2
+   - name: site_reachability
+     uri:  
+      url: http://13.232.129.9
+      status: 200
+     register: results
+   - debug:
+      msg: Site {{ results.url }} Reachable
+     when:
+      results.status == 200
+  handlers:
+   - name: restart_apache2
+     service:
+      name: apache2
+      state: restarted
+   - name: url_response
+     uri:
+      url: http://13.232.129.9
+      status: 200
+...
+

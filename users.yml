@@ -1,0 +1,16 @@
+---
+- name: creating users and capturing info in userinfo file
+  hosts: all
+  tasks:
+   - name: creating a user
+     user:
+      name: user1
+      password: user1
+      home: /home/user1
+   - name: capturing user home dir
+     shell: cut -d ":" -f 1,6 /etc/passwd >userinfo
+   - name: fetching user info
+     fetch:
+      src: userinfo
+      dest: /root
+...

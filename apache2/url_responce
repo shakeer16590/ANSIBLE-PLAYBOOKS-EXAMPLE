@@ -1,0 +1,6 @@
+---
+- name: URL CHECKING
+  uri:
+   url: http://13.233.223.196
+   status: 200
+...

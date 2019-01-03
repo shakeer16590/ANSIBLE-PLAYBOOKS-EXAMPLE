@@ -1,0 +1,10 @@
+---
+- name: service module
+  hosts: all
+  tasks:
+   - name: starting and stopping service
+     service:
+      name: "{{a}}"
+      state: "{{b}}"
+
+...

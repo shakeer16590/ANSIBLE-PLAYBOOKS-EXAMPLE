@@ -1,0 +1,14 @@
+---
+- name: LOOPS IN ANSIBLE EXAMPLE
+  hosts: node1
+  tasks:
+   - name: INSTALLING/UNINSTALLING OF PACKAGES
+     apt:
+      name: "{{item.a}}"
+      state: "{{item.b}}"
+      update_cache: "{{item.c}}"
+     with_items:
+      - {a: tree,b: present,c: yes}
+      - {a: git,b: latest,c: no}
+      - {a: finger,b: latest,c: no}
+...

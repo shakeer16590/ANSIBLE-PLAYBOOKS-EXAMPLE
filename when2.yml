@@ -1,0 +1,19 @@
+---
+- name: CHECKING IF A DIR IS PRESENT AND CREATING A FILE
+  hosts: all
+  tasks:
+   - name: CHECKING IF DIR IS PRESENT
+     stat:
+      path: /root/folder_1
+     register: results
+   - name: DISPLAY OUTPUT OF THE ABOVE MODULE
+     debug:
+      var: results
+   - name: CREATING A FILE
+     file:
+      name: /root/folder_1/file590
+      state: touch
+     when:
+      results.stat.exists == true
+
+...

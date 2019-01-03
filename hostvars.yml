@@ -1,0 +1,10 @@
+---
+- name: HOST SCOPE VARIABLE
+  hosts: 172.31.25.120
+  tasks:
+   - name: CREATING A FILE
+     file:
+      name: "{{a}}"
+      state: "{{b}}"
+
+...

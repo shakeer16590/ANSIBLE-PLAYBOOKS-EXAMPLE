@@ -1,0 +1,20 @@
+---
+# The When Statement
+# example
+# tasks:
+#  - name: "shut down Debian flavored systems"
+#    command: /sbin/shutdown -t now
+#    when: ansible_facts['os_family'] == "Debian"
+# note that all variables can be directly in conditionals without double curly braces
+- name: USING WHEN CONDITIONAL STATEMENT
+  hosts: all
+  vars: 
+   - a: "{{b}}" 
+  tasks:
+   - name: INSTALLING TREE WHEN a == 10
+     apt:
+      name: tree
+      state: present
+     when:
+      a == "10"
+...

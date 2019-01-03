@@ -1,0 +1,16 @@
+---
+- name: EXAMPLE FOR LOOPS IN ANSIBLE i.e., with_items
+  hosts: node2
+  vars:
+   - action: present
+  tasks:
+   - name: install and uninstalling packages
+     apt:
+      name: "{{item}}"
+      state: "{{action}}"
+      update_cache: yes
+     with_items:
+      - tree
+      - git
+      - finger
+...

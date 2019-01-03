@@ -1,0 +1,11 @@
+---
+- name: creating a directory
+  hosts: all
+  tasks:
+   - name: create a directory/file
+     file:
+      path: "{{a}}"
+      state: "{{b}}"
+      mode: 0755
+
+...
